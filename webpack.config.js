@@ -4,6 +4,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'sourcemap',
+  node: {
+    fs: "empty"
+  },
   entry: {},
   module: {
     loaders: [
