@@ -1,0 +1,14 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2"
+            md-component-id="left">
+
+  <md-content>
+    <md-list>
+      <md-list-item class="md-1-line"
+                    ui-sref="{{link.sref}}"
+                    ng-repeat="link in $ctrl.links"
+                    ng-click="$ctrl.closeLeftMenu()">
+        {{link.name}}
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>
