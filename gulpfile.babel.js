@@ -79,7 +79,13 @@ gulp.task('serve', () => {
   serve({
     port: process.env.PORT || 3000,
     open: false,
-    server: {baseDir: root},
+    server: {
+      baseDir: root,
+      middleware: function(req, res, next){
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
+    },
     middleware: [
       historyApiFallback(),
       webpackDevMiddelware(compiler, {
