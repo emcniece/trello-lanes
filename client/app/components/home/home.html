@@ -1,5 +1,7 @@
 <div class="md-body-2">
-  <h2 ng-if="!$ctrl.trello.currentUser">Authorize Trello to get started.</h2>
-  <h2 ng-if="$ctrl.trello.currentUser">Welcome back, {{$ctrl.trello.currentUser.fullName}}!</h2>
 
+  <div class="board-list">
+    <board-row></board-row>
+    <board-row></board-row>
+  </div>
 </div>

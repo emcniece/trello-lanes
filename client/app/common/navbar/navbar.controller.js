@@ -14,6 +14,10 @@ class NavbarController {
     return this.trello.currentUser.url;
   }
 
+  getUserAvatar(){
+    return this.trello.getAvatarPath();
+  }
+
   openLeftMenu(){
     this.$mdSidenav('left').open();
   }

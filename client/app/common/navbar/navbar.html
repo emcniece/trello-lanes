@@ -10,20 +10,23 @@
 
     <span flex></span>
 
-    <div class="navbar-user md-body-1">
+      <md-button ng-click="$ctrl.authTrello()" ng-if="!$ctrl.trello.currentUser">
+        Log In
+      </md-button>
 
-      <a href="#" ng-click="$ctrl.authTrello()" ng-if="!$ctrl.trello.currentUser">Log In</a>
+      <md-card-avatar ng-if="$ctrl.getUserAvatar()">
+        <img ng-src="{{ $ctrl.getUserAvatar() }}" alt="" />
+      </md-card-avatar>
 
-      <a href="{{ $ctrl.getUserLink() }}" target="_blank" ng-if="$ctrl.trello.currentUser">
+      <md-button href="{{ $ctrl.getUserLink() }}" target="_blank" ng-if="$ctrl.trello.currentUser">
         {{ $ctrl.getUsername() }}
-      </a>
+      </md-button>
 
       <md-button class="menu-btn md-icon-button"
                 ng-click="$ctrl.logOut()"
                 aria-label="Log Out">
         <ng-md-icon icon="logout" size="24"></ng-md-icon>
       </md-button>
-    </div>
 
   </div>
 </md-toolbar>

@@ -3,11 +3,17 @@ import trelloConfig from '~/trello.config.js';
 
 let TrelloService = function () {
   const trello = new Trello(trelloConfig.key);
+  const avatarPath = 'https://trello-avatars.s3.amazonaws.com/'; // avatarId/30.png
 
+  // Basics
   this.name = "TrelloService";
   this.localToken = localStorage.getItem('trelloToken');
-  this.currentUser = false;
   this.isInit = false;
+
+  // Data models
+  this.currentUser = false;
+  this.boards = false;
+
 
   /* Initialization */
   this.init = () => {
@@ -62,10 +68,25 @@ let TrelloService = function () {
     return this.currentUser;
   }
 
-  this.getBoards = () => {
-    return trello.get('/1/members/me').then((user) => {
-      this.currentUser = user;
-      return user;
+  this.getAvatarPath = (imgSize) => {
+    if(!imgSize) imgSize = 30;
+    if(!this.currentUser || !this.currentUser.avatarHash)
+      return false;
+
+    return avatarPath+this.currentUser.avatarHash+'/'+imgSize+'.png';
+  }
+
+  this.getBoards = (memberId) => {
+    if(!memberId) memberId = 'me';
+    return trello.get('/1/members/'+memberId+'/boards').then((boards) => {
+      this.boards = boards;
+      return boards;
+    });
+  }
+
+  this.getLists = (boardId) => {
+    return trello.get('/1/boards/'+boardId+'/lists').then((lists) => {
+      return lists;
     });
   }
 

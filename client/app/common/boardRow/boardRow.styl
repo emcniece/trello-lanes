@@ -1,0 +1,21 @@
+@import '../../app'
+
+.boardRow
+  min-height:100px;
+
+board-row
+  padding-top:16px;
+  &:first-child
+    padding-top:0;
+  .boardRow
+    border-bottom:1px solid $lightBorderColor;
+  &:last-child .boardRow
+    border-bottom:3px dashed $lightBorderColor;
+
+.board-bg
+  height:1em
+  width:1em
+  display:inline-block
+  border-radius:4px
+  border:1px solid $lightBorderColor
+  margin-right:.5em

@@ -1,0 +1,16 @@
+<div class="listCol" layout="column" layout-align="center">
+  <md-menu>
+    <md-button class="md-disabled md-hue-1"  ng-click="$ctrl.openListMenu($mdOpenMenu, $event)">
+      Add List
+      <ng-md-icon icon="add_circle_outline"></ng-md-icon>
+    </md-button>
+
+    <md-menu-content width="4">
+      <md-menu-item ng-repeat="list in $ctrl.lists">
+        <md-button ng-click="$ctrl.setActivelist(list)">
+          {{list.name}}
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</div>
