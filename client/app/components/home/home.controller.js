@@ -7,10 +7,10 @@ class HomeController {
   }
 
   $onInit() {
-    this.trello.getMe().then((user) => {
-      this.userName = user.fullName;
-      this.$scope.$apply();
-    });
+  }
+
+  isTrelloInit(){
+    return this.trello.isInit;
   }
 }
 

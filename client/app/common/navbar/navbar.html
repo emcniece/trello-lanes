@@ -6,6 +6,24 @@
       <ng-md-icon icon="menu"></ng-md-icon>
     </md-button>
 
-    <h1>NG6 Starter with Angular Material</h1>
+    <h1>Trello Lanes</h1>
+
+    <span flex></span>
+
+    <div class="navbar-user md-body-1">
+
+      <a href="#" ng-click="$ctrl.authTrello()" ng-if="!$ctrl.trello.currentUser">Log In</a>
+
+      <a href="{{ $ctrl.getUserLink() }}" target="_blank" ng-if="$ctrl.trello.currentUser">
+        {{ $ctrl.getUsername() }}
+      </a>
+
+      <md-button class="menu-btn md-icon-button"
+                ng-click="$ctrl.logOut()"
+                aria-label="Log Out">
+        <ng-md-icon icon="logout" size="24"></ng-md-icon>
+      </md-button>
+    </div>
+
   </div>
 </md-toolbar>

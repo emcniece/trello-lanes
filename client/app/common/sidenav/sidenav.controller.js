@@ -4,8 +4,8 @@ class SidenavController {
     this.name = 'sidenav';
     this.$mdSidenav = $mdSidenav;
     this.links = [
-      {name: 'Home', sref: 'home'},
-      {name: 'About', sref: 'about'}
+      {name: 'Home', sref: 'main.home'},
+      {name: 'About', sref: 'main.about'}
     ];
   }
 

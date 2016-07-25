@@ -16,11 +16,28 @@ angular.module('app', [
     Common,
     Components
   ])
-  .config(($locationProvider) => {
+  .config(($locationProvider, $stateProvider, $urlRouterProvider) => {
     "ngInject";
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      // 'main' state acts as a preloader for all other states. Ensure that
+      // all other states are a child of main ('main.newState').
+      .state('main', {
+        url: '',
+        abstract: true,
+        template: '<ui-view></ui-view>',
+        resolve: {
+          trelloInit: function(TrelloService){
+            return TrelloService.init();
+          }
+        }
+
+    });
   })
 
   .component('app', AppComponent);
