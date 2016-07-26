@@ -13,7 +13,7 @@ let TrelloService = function () {
   // Data models
   this.currentUser = false;
   this.boards = false;
-
+  this.userOrgs = false;
 
   /* Initialization */
   this.init = () => {
@@ -76,16 +76,25 @@ let TrelloService = function () {
     return avatarPath+this.currentUser.avatarHash+'/'+imgSize+'.png';
   }
 
+  this.getUserOrgs = (memberId) => {
+    if(!memberId) memberId = 'me';
+    return trello.get(`/1/members/${memberId}/organizations`).then((orgs) => {
+      console.log(orgs)
+      this.userOrgs = orgs;
+      return orgs;
+    });
+  }
+
   this.getBoards = (memberId) => {
     if(!memberId) memberId = 'me';
-    return trello.get('/1/members/'+memberId+'/boards').then((boards) => {
+    return trello.get(`/1/members/${memberId}/boards`).then((boards) => {
       this.boards = boards;
       return boards;
     });
   }
 
   this.getLists = (boardId) => {
-    return trello.get('/1/boards/'+boardId+'/lists').then((lists) => {
+    return trello.get(`/1/boards/${boardId}/lists`).then((lists) => {
       return lists;
     });
   }

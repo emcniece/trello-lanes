@@ -1,6 +1,11 @@
 class ListColController {
   constructor(TrelloService) {
     "ngInject";
+
+    /* Bindings:
+      this.board
+    */
+
     this.name = 'listCol';
     this.trello = TrelloService;
     this.lists = false;

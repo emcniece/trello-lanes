@@ -4,7 +4,10 @@ import './boardRow.styl';
 
 let boardRowComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    board: '=',
+    index: '='
+  },
   template,
   controller
 };

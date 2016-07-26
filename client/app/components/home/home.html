@@ -1,7 +1,28 @@
 <div class="md-body-2">
 
   <div class="board-list">
-    <board-row></board-row>
-    <board-row></board-row>
+    <board-row ng-repeat="board in $ctrl.selectedBoards" board="board", index="$index"></board-row>
+
+    <div class="boardRow" layout="row" >
+      <div flex="25" class="board-name" layout="column" layout-align="center">
+
+        <md-menu ng-if="!$ctrl.activeBoard">
+          <md-button class="md-primary md-hue-3" aria-label="Open board selection menu" ng-click="$ctrl.openBoardMenu($mdOpenMenu, $event)">
+            Add Board
+            <ng-md-icon icon="add_circle_outline"></ng-md-icon>
+          </md-button>
+
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="board in $ctrl.boards">
+              <md-button ng-click="$ctrl.setActiveBoard(board)">
+                <span class="board-bg" style="background-color:{{board.prefs.backgroundColor}}"></span>
+                {{board.name}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+
   </div>
 </div>

@@ -14,7 +14,8 @@
     "normalize.css": "^3.0.3",
     "npm": "^3.10.5",
     "trello": "^0.5.1",
-    "trello-browser": "0.0.6"
+    "trello-browser": "0.0.6",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0",

@@ -1,5 +1,14 @@
 @import '../../app'
 
+
+.board-bg
+  height:1em
+  width:1em
+  display:inline-block
+  border-radius:4px
+  border:1px solid $lightBorderColor
+  margin-right:.5em
+
 .boardRow
   min-height:100px;
 
@@ -11,11 +20,15 @@ board-row
     border-bottom:1px solid $lightBorderColor;
   &:last-child .boardRow
     border-bottom:3px dashed $lightBorderColor;
+  md-card
+    md-card-actions
+      .md-button
+        &.md-icon-button
+          margin:0 !important;
+          ng-md-icon
+            width:16px
+            height:16px
+            svg
+              width:16px
+              height:16px
 
-.board-bg
-  height:1em
-  width:1em
-  display:inline-block
-  border-radius:4px
-  border:1px solid $lightBorderColor
-  margin-right:.5em

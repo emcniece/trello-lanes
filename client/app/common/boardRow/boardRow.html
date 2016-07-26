@@ -1,42 +1,40 @@
 <div class="boardRow" layout="row" >
   <div flex="25" class="board-name" layout="column" layout-align="center">
 
-    <md-menu ng-if="!$ctrl.activeBoard">
-      <md-button class="md-primary md-hue-3" aria-label="Open board selection menu" ng-click="$ctrl.openBoardMenu($mdOpenMenu, $event)">
-        Add Board
-        <ng-md-icon icon="add_circle_outline"></ng-md-icon>
-      </md-button>
-
-      <md-menu-content width="4">
-        <md-menu-item ng-repeat="board in $ctrl.boards">
-          <md-button ng-click="$ctrl.setActiveBoard(board)">
-            <span class="board-bg" style="background-color:{{board.prefs.backgroundColor}}"></span>
-            {{board.name}}
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
-
-    <md-card ng-if="$ctrl.activeBoard" md-theme="{{$ctrl.activeBoard.prefs.backgroundBrightness}}" style="background-color:{{$ctrl.activeBoard.prefs.backgroundColor}}">
+    <md-card ng-if="$ctrl.board" md-theme="{{$ctrl.board.prefs.backgroundBrightness}}" style="background-color:{{$ctrl.board.prefs.backgroundColor}}">
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline md-body-3">{{$ctrl.activeBoard.name}}</span>
-          <span class="md-subhead">
-            <ng-md-icon icon="schedule" size="18"></ng-md-icon>11:34pm
+          <span class="md-headline md-body-3">{{$ctrl.board.name}}</span>
+
+          <span class="md-subhead" title="Last Updated">
+            <ng-md-icon icon="account_balance" size="18"></ng-md-icon>{{$ctrl.getActiveOrg().displayName}}
           </span>
         </md-card-title-text>
       </md-card-title>
+
       <md-card-actions layout="row" layout-align="end center">
-        <md-button class="md-icon-button">
-          <ng-md-icon icon="mode_edit"></ng-md-icon>
-        </md-button>
-        <a href="{{$ctrl.activeBoard.url}}" target="_blank" class="md-button md-icon-button">
+        <md-menu>
+          <md-button class="md-icon-button" aria-label="Change Board" ng-click="$ctrl.openBoardMenu($mdOpenMenu, $event)" title="Change board">
+            <ng-md-icon icon="mode_edit"></ng-md-icon>
+          </md-button>
+
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="board in $ctrl.boards">
+              <md-button ng-click="$ctrl.setActiveBoard(board)">
+                <span class="board-bg" style="background-color:{{board.prefs.backgroundColor}}"></span>
+                {{board.name}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+
+        <a href="{{$ctrl.board.url}}" target="_blank" class="md-button md-icon-button" title="Open board">
           <ng-md-icon icon="open_in_new"></ng-md-icon>
         </a>
       </md-card-actions>
     </md-card>
   </div>
 
-  <list-col ng-if="$ctrl.activeBoard" flex board="$ctrl.activeBoard"></list-col>
+  <list-col ng-if="$ctrl.board" flex board="$ctrl.board"></list-col>
 
 </div>
